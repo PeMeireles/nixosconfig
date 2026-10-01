@@ -15,5 +15,15 @@
           ${../../.config/niri/config.kdl} "$config_file"
       fi
     '';
+
+    system.activationScripts.niriDmsBinds.text = ''
+      dms_dir=/home/vepelozi/.config/niri/dms
+      dms_binds=$dms_dir/binds.kdl
+      install -d -o vepelozi -g users "$dms_dir"
+      if [ ! -e "$dms_binds" ]; then
+        install -o vepelozi -g users -m 0644 \
+          ${../../.config/niri/dms/binds.kdl} "$dms_binds"
+      fi
+    '';
   };
 }
