@@ -99,7 +99,7 @@ animations {
 }
 
 // Copied from ~/.config/niri/dms/binds.kdl.
-include "dms/binds.kdl"
+include optional=true "dms/binds.kdl"
 
 window-rule {
     match app-id=r#"^org\.gnome\."#

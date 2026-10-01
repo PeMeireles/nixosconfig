@@ -1,43 +1,19 @@
-{ self, inputs, ... }: {
-    flake.nixosModules.dms = { pkgs, ... }: {
-        imports = [ inputs.dms.nixosModules.dank-material-shell ];
-
-        programs.dank-material-shell = {
-            enable = true;
-            package = inputs.dms.packages.${pkgs.system}.dms-shell;
-            systemd.enable = true;
-        };
+{ ... }: {
+  flake.nixosModules.niri = { pkgs, ... }: {
+    programs.niri = {
+      enable = true;
+      package = pkgs.niri;
     };
 
-    flake.nixosModules.dankGreeter = { ... }: {
-        imports = [ inputs.dank-greeter.nixosModules.default ];
-
-        programs.dms-greeter = {
-            enable = true;
-            compositor.name = "niri";
-            configHome = "/home/vepelozi";
-        };
-    };
-
-    flake.nixosModules.niri = {  pkgs, lib, ... }: {
-        environment.systemPackages = [ pkgs.kitty pkgs.opencode ];
-        environment.etc."xdg/kitty".source = ../../.config/kitty;
-
-        programs.niri = {
-	    enable = true;
-	    package = self.packages.${pkgs.stdenv.hostPlatform.system}.myNiri;
-        };
-    };
-    perSystem = { pkgs, lib, ... }: {
-	packages.dms = inputs.dms.packages.${pkgs.system}.dms-shell;
-
-	packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
-	    inherit pkgs;
-	    "config.kdl".content = builtins.replaceStrings
-	      [ ''include "dms/binds.kdl"'' ]
-	      [ (builtins.readFile ../../.config/niri/dms/binds.kdl) ]
-	      (builtins.readFile ../../.config/niri/config.kdl);
-
-	};
-    };
+    # Seed the editable user config only once.
+    system.activationScripts.niriConfig.text = ''
+      config_dir=/home/vepelozi/.config/niri
+      config_file=$config_dir/config.kdl
+      install -d -o vepelozi -g users "$config_dir"
+      if [ ! -e "$config_file" ]; then
+        install -o vepelozi -g users -m 0644 \
+          ${../../.config/niri/config.kdl} "$config_file"
+      fi
+    '';
+  };
 }

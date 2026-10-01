@@ -11,6 +11,7 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
       self.nixosModules.dms
       self.nixosModules.dankGreeter
       self.nixosModules.niri
+      self.nixosModules.desktopTools
     ];
 
   # Use the systemd-boot EFI boot loader.
