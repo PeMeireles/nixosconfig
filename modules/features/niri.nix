@@ -14,6 +14,9 @@
         install -o vepelozi -g users -m 0644 \
           ${../../.config/niri/config.kdl} "$config_file"
       fi
+      if ! grep -q 'dms/binds.kdl' "$config_file"; then
+        printf '\ninclude optional=true "dms/binds.kdl"\n' >> "$config_file"
+      fi
     '';
 
     system.activationScripts.niriDmsBinds.text = ''
