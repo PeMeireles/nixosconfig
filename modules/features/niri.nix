@@ -20,7 +20,8 @@
     };
 
     flake.nixosModules.niri = {  pkgs, lib, ... }: {
-        environment.systemPackages = [ pkgs.kitty ];
+        environment.systemPackages = [ pkgs.kitty pkgs.opencode ];
+        environment.etc."xdg/kitty".source = ../../.config/kitty;
 
         programs.niri = {
 	    enable = true;
