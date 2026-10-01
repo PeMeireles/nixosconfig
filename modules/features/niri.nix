@@ -14,8 +14,10 @@
         install -o vepelozi -g users -m 0644 \
           ${../../.config/niri/config.kdl} "$config_file"
       fi
-      if ! grep -q 'dms/binds.kdl' "$config_file"; then
-        printf '\ninclude optional=true "dms/binds.kdl"\n' >> "$config_file"
+      if grep -q 'include.*"dms/binds.kdl"' "$config_file"; then
+        sed -i 's#include\( optional=true\)\? "dms/binds.kdl"#include optional=true "/home/vepelozi/.config/niri/dms/binds.kdl"#' "$config_file"
+      elif ! grep -q '/home/vepelozi/.config/niri/dms/binds.kdl' "$config_file"; then
+        printf '\ninclude optional=true "/home/vepelozi/.config/niri/dms/binds.kdl"\n' >> "$config_file"
       fi
     '';
 
