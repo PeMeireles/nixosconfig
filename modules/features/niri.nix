@@ -30,9 +30,7 @@
 
 	packages.myNiri = inputs.wrapper-modules.wrappers.niri.wrap {
 	    inherit pkgs;
-	    settings = {
 	    config.kdl.content = builtins.readFile ../../.config/niri/config.kdl;
-	    };
 
 	};
     };
