@@ -1,13 +1,15 @@
 # Edit this configuration file to define what should be installed on
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-{ self, inouts, ... }: {
+{ self, ... }: {
 flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       self.nixosModules.laptopHardware
+      self.nixosModules.dms
+      self.nixosModules.dankGreeter
       self.nixosModules.niri
     ];
 

@@ -1,0 +1,142 @@
+// User Niri configuration copied from ~/.config/niri/config.kdl.
+// DMS-managed files are intentionally not included here; DMS owns those.
+
+config-notification {
+    disable-failed
+}
+
+gestures {
+    hot-corners {
+        off
+    }
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "pt"
+            variant "colemak"
+        }
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+}
+
+environment {
+    XDG_CURRENT_DESKTOP "niri"
+}
+
+layout {
+    background-color "transparent"
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    border {
+        off
+        width 0
+        active-color "#000000"
+        inactive-color "#000000"
+        urgent-color "#cc4444"
+    }
+
+    shadow {
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0000"
+    }
+}
+
+layer-rule {
+    match namespace="^quickshell$"
+    place-within-backdrop true
+}
+
+overview {
+    workspace-shadow {
+        off
+    }
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+animations {
+    workspace-switch {
+        spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
+    }
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+    window-close {
+        duration-ms 150
+        curve "ease-out-quad"
+    }
+    horizontal-view-movement {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+}
+
+// DMS is started by its user service. These keybinds use DMS's stable IPC API.
+binds {
+    Mod+T { spawn "kitty"; }
+    Mod+Space { spawn "dms" "ipc" "call" "spotlight" "toggle"; }
+    Mod+N { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+    Mod+Comma { spawn "dms" "ipc" "call" "settings" "focusOrToggle"; }
+    Mod+V { spawn "dms" "ipc" "call" "clipboard" "toggle"; }
+    Mod+Alt+L { spawn "dms" "ipc" "call" "lock" "lock"; }
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+window-rule {
+    match app-id=r#"^org\.gnome\.Calculator$"#
+    match app-id=r#"^gnome-calculator$"#
+    match app-id="kitty"
+    open-floating true
+}
+
+window-rule {
+    match app-id=r#"^com\.danklinux\.dms$"#
+    open-floating true
+}
+
+debug {
+    honor-xdg-activation-with-invalid-serial
+}
+
+recent-windows {
+    binds {
+        Alt+Tab { next-window scope="output"; }
+        Alt+Shift+Tab { previous-window scope="output"; }
+        Alt+grave { next-window filter="app-id"; }
+        Alt+Shift+grave { previous-window filter="app-id"; }
+    }
+}
