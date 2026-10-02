@@ -24,6 +24,7 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
       self.modules.homeManager.dms
       self.modules.homeManager.terminal
       self.modules.homeManager.fish
+      self.modules.homeManager.cursor
     ];
 
     home.stateVersion = "26.05";
