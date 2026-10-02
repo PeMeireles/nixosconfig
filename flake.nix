@@ -5,6 +5,13 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     import-tree.url = "github:vic/import-tree";
 
+    home-manager = {
+      url = "github:nix-community/home-manager/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri-nix.url = "git+https://codeberg.org/BANanaD3V/niri-nix";
+
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
 
     dms = {

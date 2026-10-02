@@ -5,8 +5,15 @@
       pkgs.opencode
     ];
 
-    # The base config is immutable; DMS-generated theme files stay in the
-    # user's ~/.config/kitty and remain writable.
-    environment.etc."xdg/kitty".source = ../../.config/kitty;
+  };
+
+  flake.homeModules.kitty = {
+    programs.kitty = {
+      enable = true;
+      extraConfig = ''
+        include ~/.config/kitty/dank-tabs.conf
+        include ~/.config/kitty/dank-theme.conf
+      '';
+    };
   };
 }
