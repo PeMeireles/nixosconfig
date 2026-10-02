@@ -39,8 +39,8 @@
           };
           layer-rule = [
             {
-              matches = [ { namespace = "^quickshell$"; } ];
-              place-within-backdrop = true;
+              match._props.namespace = "^quickshell$";
+              place-within-backdrop = [];
             }
           ];
           overview.workspace-shadow.off = [];
