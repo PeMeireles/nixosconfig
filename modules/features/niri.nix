@@ -46,7 +46,7 @@
           overview.workspace-shadow.off = [];
           screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
           animations = {
-            workspace-switch.spring = {
+            workspace-switch.spring._props = {
               damping-ratio = 0.80;
               stiffness = 523;
               epsilon = 0.0001;
@@ -59,17 +59,17 @@
               duration-ms = 150;
               curve = "ease-out-quad";
             };
-            horizontal-view-movement.spring = {
+            horizontal-view-movement.spring._props = {
               damping-ratio = 0.85;
               stiffness = 423;
               epsilon = 0.0001;
             };
-            window-movement.spring = {
+            window-movement.spring._props = {
               damping-ratio = 0.75;
               stiffness = 323;
               epsilon = 0.0001;
             };
-            window-resize.spring = {
+            window-resize.spring._props = {
               damping-ratio = 0.85;
               stiffness = 423;
               epsilon = 0.0001;
