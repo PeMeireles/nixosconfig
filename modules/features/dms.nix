@@ -11,7 +11,7 @@
   };
 
   flake = {
-    modules.homeManager.dms = { inputs, ... }: {
+    modules.homeManager.dms = { ... }: {
       imports = [ inputs.dms.homeModules.dank-material-shell ];
       programs.dank-material-shell = {
         enable = true;
