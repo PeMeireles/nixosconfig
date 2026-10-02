@@ -16,6 +16,8 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
       inputs.home-manager.nixosModules.home-manager
     ];
 
+  home-manager.backupFileExtension = "hm-backup";
+
   home-manager.users.vepelozi = {
     imports = [
       self.modules.homeManager.niri
