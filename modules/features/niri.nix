@@ -27,8 +27,14 @@
             border.off = [];
           };
           screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
+          spawn-at-startup = [ [ "dms" "run" ] ];
           binds = {
             "Mod+T".spawn = [ "kitty" ];
+            "Mod+Space".spawn = [ "dms" "ipc" "call" "spotlight" "toggle" ];
+            "Mod+N".spawn = [ "dms" "ipc" "call" "notifications" "toggle" ];
+            "Mod+Comma".spawn = [ "dms" "ipc" "call" "settings" "focusOrToggle" ];
+            "Mod+V".spawn = [ "dms" "ipc" "call" "clipboard" "toggle" ];
+            "Mod+Alt+L".spawn = [ "dms" "ipc" "call" "lock" "lock" ];
             "Mod+Shift+T".toggle-window-floating = [];
             "Mod+D".toggle-overview = [];
             "Mod+Tab".toggle-overview = [];
