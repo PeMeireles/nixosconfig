@@ -10,7 +10,7 @@
 
   };
 
-  flake.homeModules.dms = { inputs, ... }: {
+  flake.modules.homeManager.dms = { inputs, ... }: {
     imports = [ inputs.dms.homeModules.dank-material-shell ];
 
     programs.dank-material-shell = {

@@ -6,7 +6,7 @@
     };
   };
 
-  flake.homeModules.niri = { pkgs, ... }: {
+  flake.modules.homeManager.niri = { pkgs, ... }: {
     imports = [ inputs.niri-nix.homeModules.default ];
 
     wayland.windowManager.niri = {

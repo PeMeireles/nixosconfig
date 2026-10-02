@@ -4,7 +4,7 @@
     users.users.vepelozi.shell = pkgs.fish;
   };
 
-  flake.homeModules.fish = {
+  flake.modules.homeManager.fish = {
     programs.fish.enable = true;
   };
 }

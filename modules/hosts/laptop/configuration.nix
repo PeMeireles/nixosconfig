@@ -18,10 +18,10 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
 
   home-manager.users.vepelozi = {
     imports = [
-      self.homeModules.niri
-      self.homeModules.dms
-      self.homeModules.kitty
-      self.homeModules.fish
+      self.modules.homeManager.niri
+      self.modules.homeManager.dms
+      self.modules.homeManager.kitty
+      self.modules.homeManager.fish
     ];
 
     home.stateVersion = "26.05";
