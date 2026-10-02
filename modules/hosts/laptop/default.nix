@@ -9,11 +9,13 @@
         imports = with self.nixosModules; [
           laptopConfiguration
           dms
-          power
           dankGreeter
           niri
           terminal
           fish
+          camera
+          discord
+          thunderbird
         ];
 
         home-manager.backupFileExtension = "hm-backup";
@@ -26,8 +28,11 @@
           terminal
           fish
           cursor
+          creative
+          media
         ];
 
+        nixpkgs.config.allowUnfree = true;
         home.stateVersion = "26.05";
       };
     };

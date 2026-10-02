@@ -15,8 +15,26 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
   boot.loader.systemd-boot.configurationLimit = 2;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    open = true;
+    nvidiaSettings = true;
+
+    prime = {
+      offload.enable = true;
+      offload.enableOffloadCmd = true;
+      amdgpuBusId = "PCI:4:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -27,6 +45,17 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  boot.kernelModules = [ "uvcvideo" ];
+
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+  };
+
+  services.upower.enable = true;
+  services.acpid.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
@@ -59,7 +88,7 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
   users.users."vepelozi" = {
     isNormalUser = true;
     description = "PPPP";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [];
   };
 
