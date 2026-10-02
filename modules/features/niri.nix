@@ -163,6 +163,8 @@
             "Mod+Equal".set-column-width = "+10%";
             "Mod+Minus".set-column-width = "-10%";
             "Mod+Plus".set-window-width = "+10%";
+            "Mod+ordmasculine".set-window-width = "100%";
+            "Mod+Shift+ordmasculine".set-window-width = "50%";
             "Mod+Shift+Minus".set-window-height = "-10%";
             "Mod+Shift+Plus".set-window-height = "+10%";
             "Mod+Ctrl+F".expand-column-to-available-width = [];
