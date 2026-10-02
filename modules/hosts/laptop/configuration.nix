@@ -8,27 +8,7 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
   imports =
     [ # Include the results of the hardware scan.
       self.nixosModules.laptopHardware
-      self.nixosModules.dms
-      self.nixosModules.dankGreeter
-      self.nixosModules.niri
-      self.nixosModules.terminal
-      self.nixosModules.fish
-      inputs.home-manager.nixosModules.home-manager
     ];
-
-  home-manager.backupFileExtension = "hm-backup";
-
-  home-manager.users.vepelozi = {
-    imports = [
-      self.modules.homeManager.niri
-      self.modules.homeManager.dms
-      self.modules.homeManager.terminal
-      self.modules.homeManager.fish
-      self.modules.homeManager.cursor
-    ];
-
-    home.stateVersion = "26.05";
-  };
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;

@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{ self, inputs, ... }: {
   flake.nixosModules.dms = { pkgs, ... }: {
     imports = [ inputs.dms.nixosModules.dank-material-shell ];
 
@@ -7,20 +7,17 @@
       package = inputs.dms.packages.${pkgs.system}.dms-shell;
       systemd.enable = true;
     };
-
-    services.upower.enable = true;
-    services.acpid.enable = true;
-
   };
 
   flake = {
     modules.homeManager.dms = { ... }: {
       imports = [
         inputs.dms.homeModules.dank-material-shell
+        self.modules.homeManager.dms-niri
+        self.modules.homeManager.dms-settings
       ];
-      programs.dank-material-shell = {
-        enable = true;
-      };
+
+      programs.dank-material-shell.enable = true;
     };
   };
 }
