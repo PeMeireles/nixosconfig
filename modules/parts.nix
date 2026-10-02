@@ -1,4 +1,11 @@
+{ lib, ... }:
 {
+  options.flake.modules = lib.mkOption {
+    type = lib.types.attrsOf (lib.types.attrsOf lib.types.raw);
+    default = { };
+    description = "Dendritic NixOS and Home Manager modules.";
+  };
+
   config = {
     systems = [
       "x86_64-linux"
