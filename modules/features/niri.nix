@@ -33,7 +33,7 @@
             shadow = {
               softness = 30;
               spread = 5;
-              offset = { x = 0; y = 5; };
+              offset._props = { x = 0; y = 5; };
               color = "#0000";
             };
           };
