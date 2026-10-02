@@ -8,6 +8,9 @@
       systemd.enable = true;
     };
 
+    services.upower.enable = true;
+    services.acpid.enable = true;
+
   };
 
   flake = {

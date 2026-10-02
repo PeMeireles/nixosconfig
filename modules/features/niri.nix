@@ -75,7 +75,6 @@
               epsilon = 0.0001;
             };
           };
-          spawn-at-startup = [ [ "dms" "run" ] ];
           binds = {
             "Mod+T".spawn = [ "kitty" ];
             "Mod+Space".spawn = [ "dms" "ipc" "call" "spotlight" "toggle" ];
