@@ -40,7 +40,7 @@
           layer-rule = [
             {
               match._props.namespace = "^quickshell$";
-              place-within-backdrop = [];
+              place-within-backdrop = true;
             }
           ];
           overview.workspace-shadow.off = [];
