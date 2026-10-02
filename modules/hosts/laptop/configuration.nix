@@ -11,7 +11,7 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
       self.nixosModules.dms
       self.nixosModules.dankGreeter
       self.nixosModules.niri
-      self.nixosModules.desktopTools
+      self.nixosModules.terminal
       self.nixosModules.fish
       inputs.home-manager.nixosModules.home-manager
     ];
@@ -20,7 +20,7 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
     imports = [
       self.modules.homeManager.niri
       self.modules.homeManager.dms
-      self.modules.homeManager.kitty
+      self.modules.homeManager.terminal
       self.modules.homeManager.fish
     ];
 

@@ -10,13 +10,14 @@
 
   };
 
-  flake.modules.homeManager.dms = { inputs, ... }: {
-    imports = [ inputs.dms.homeModules.dank-material-shell ];
-
-    programs.dank-material-shell = {
-      enable = true;
-      niri.enableKeybinds = true;
-      niri.enableSpawn = true;
+  flake = {
+    modules.homeManager.dms = { inputs, ... }: {
+      imports = [ inputs.dms.homeModules.dank-material-shell ];
+      programs.dank-material-shell = {
+        enable = true;
+        niri.enableKeybinds = true;
+        niri.enableSpawn = true;
+      };
     };
   };
 }
