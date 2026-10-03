@@ -1,0 +1,40 @@
+{
+  isLightMode = true;
+  wallpaperPath = "/home/vepelozi/Pictures/Wallpapers/wallpape.png";
+  weatherLocation = "";
+  weatherCoordinates = "41.1784933,-8.5961974";
+  doNotDisturb = true;
+  doNotDisturbHeldByScreenShare = true;
+  nightModeEnabled = true;
+  lastPlayerIdentity = "Mozilla firefox";
+  launcherQueryHistory = [
+    "fi"
+    "sob"
+    "so"
+    "fire"
+    "ves"
+    "weat"
+    "wea"
+    "note"
+    "dis"
+    "dol"
+    "dolp"
+    "ve"
+    "f"
+    "sove"
+    "sober"
+    "ire"
+    "pint"
+    "nv"
+    "di"
+    "disc"
+    "zo"
+    "zoom"
+    "kam"
+    "\\"
+    "kit"
+    "d"
+    "k"
+  ];
+  configVersion = 7;
+}

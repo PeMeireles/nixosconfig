@@ -1,0 +1,164 @@
+{
+  currentThemeName = "dynamic";
+  dockConfigs = [
+    {
+      id = "dock";
+      name = "Dock";
+      enabled = false;
+      screenPreferences = [
+        "all"
+      ];
+      showOnLastDisplay = true;
+      position = 1;
+      mode = "compact";
+      taskbarAlign = "center";
+      widgetExpansion = "popout";
+      iconSize = 40;
+      spacing = 4;
+      itemSpacing = 4;
+      margin = 0;
+      bottomGap = 0;
+      transparency = 1;
+      followInterfaceStyle = true;
+      autoHide = false;
+      smartAutoHide = false;
+      useOverlayLayer = false;
+      editOnRightClick = false;
+      showOnFullscreen = false;
+      openOnOverview = false;
+      groupByApp = false;
+      separatePinnedAndRunningApps = false;
+      restoreSpecialWorkspaceOnClick = false;
+      isolateDisplays = false;
+      indicatorStyle = "circle";
+      borderEnabled = false;
+      borderColor = "surfaceText";
+      borderOpacity = 1;
+      borderThickness = 1;
+      launcherEnabled = false;
+      launcherLogoMode = "apps";
+      launcherLogoCustomPath = "";
+      launcherLogoColorOverride = "";
+      launcherLogoSizeOffset = 0;
+      launcherLogoBrightness = 0.5;
+      launcherLogoContrast = 1;
+      maxVisibleApps = 0;
+      maxVisibleRunningApps = 0;
+      showOverflowBadge = true;
+      showTrash = false;
+      trashFileManager = "default";
+      trashCustomCommand = "";
+      magnification = false;
+      magnificationScale = 130;
+      magnificationProfile = "parabolic";
+      order = [
+      
+      ];
+      widgets = [
+        {
+          enabled = true;
+          id = "dock_launcher";
+          widgetId = "dockLauncher";
+        }
+        {
+          enabled = true;
+          id = "dock_apps";
+          widgetId = "appsDock";
+        }
+        {
+          enabled = true;
+          id = "dock_trash";
+          widgetId = "dockTrash";
+        }
+      ];
+    }
+  ];
+  currentThemeCategory = "dynamic";
+  matugenScheme = "scheme-expressive";
+  matugenSpec = "2025";
+  dmsWindowsFloatingSeeded = [
+    "niri"
+  ];
+  barElevationEnabled = false;
+  appIdSubstitutions = [
+    {
+      pattern = "Spotify";
+      replacement = "spotify";
+      type = "exact";
+    }
+  ];
+  barConfigs = [
+    {
+      autoHide = false;
+      autoHideDelay = 250;
+      borderColor = "surfaceText";
+      borderEnabled = false;
+      borderOpacity = 1;
+      borderThickness = 1;
+      bottomGap = 0;
+      centerWidgets = [
+        "music"
+        "clock"
+        "weather"
+      ];
+      enabled = true;
+      followInterfaceStyle = true;
+      fontScale = 1;
+      gothCornerRadiusOverride = false;
+      gothCornerRadiusValue = 12;
+      gothCornersEnabled = false;
+      id = "default";
+      innerPadding = 4;
+      leftWidgets = [
+        {
+          enabled = true;
+          id = "launcherButton";
+          launcherLogoCustomPath = "";
+          launcherLogoMode = "apps";
+        }
+        "workspaceSwitcher"
+        "focusedWindow"
+      ];
+      name = "Main Bar";
+      noBackground = false;
+      openOnOverview = false;
+      popupGapsAuto = true;
+      popupGapsManual = 4;
+      position = 0;
+      rightWidgets = [
+        "systemTray"
+        "clipboard"
+        "cpuUsage"
+        "memUsage"
+        "notificationButton"
+        "battery"
+        "controlCenterButton"
+      ];
+      screenPreferences = [
+        "all"
+      ];
+      showOnLastDisplay = true;
+      spacing = 4;
+      squareCorners = false;
+      transparency = 1;
+      visible = true;
+      widgetFollowInterfaceStyle = true;
+      widgetTransparency = 1;
+    }
+  ];
+  builtInPluginSettings = {
+    dms_clipboard_search = {
+      trigger = "cb";
+    };
+    dms_power = {
+      trigger = "pw";
+    };
+    dms_qr_generator = {
+      trigger = "qrg";
+    };
+    dms_settings_search = {
+      trigger = "?";
+    };
+  };
+  configVersion = 36;
+}

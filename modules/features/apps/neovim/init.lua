@@ -1,0 +1,6 @@
+require("opts")
+require("filetype")
+require("keymap")
+require("lsp")
+require("plugins")
+vim.cmd("ShowkeysToggle")

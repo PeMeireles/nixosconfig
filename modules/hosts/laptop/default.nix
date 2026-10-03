@@ -11,6 +11,9 @@
           dms
           dankGreeter
           niri
+          flatpak
+          sober
+          dolphin
           terminal
           fish
           camera
@@ -30,7 +33,10 @@
           cursor
           creative
           media
-        ];
+           default-apps
+           dolphin
+           neovim
+         ];
 
         nixpkgs.config.allowUnfree = true;
         home.stateVersion = "26.05";

@@ -5,8 +5,13 @@
   };
 
   flake = {
-    modules.homeManager.fish = {
+    modules.homeManager.fish = { pkgs, ... }: {
       programs.fish.enable = true;
+
+      home.packages = [
+        pkgs.ouch
+        pkgs.wl-clipboard
+      ];
     };
   };
 }

@@ -22,6 +22,8 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
 
   services.xserver.videoDrivers = [ "nvidia" ];
 
+  programs.gamemode.enable = true;
+
   hardware.nvidia = {
     modesetting.enable = true;
     powerManagement.enable = true;
@@ -51,6 +53,21 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
   services.pipewire = {
     enable = true;
     pulse.enable = true;
+
+    wireplumber.extraConfig."51-onboard-microphone-rate" = {
+      "monitor.alsa.rules" = [
+        {
+          matches = [
+            { "node.name" = "~alsa_input.pci-0000_04_00.6.*"; }
+          ];
+          actions = {
+            "update-props" = {
+              "audio.rate" = 44100;
+            };
+          };
+        }
+      ];
+    };
   };
 
   services.upower.enable = true;
@@ -99,10 +116,9 @@ flake.nixosModules.laptopConfiguration = { config, pkgs, ... }:
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     git
-     firefox
-   ];
+      wget
+      git
+    ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
