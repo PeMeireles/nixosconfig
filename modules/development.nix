@@ -4,12 +4,23 @@
       system = pkgs.stdenv.hostPlatform.system;
       config.allowUnfree = true;
     };
+    copilotLua = packagePkgs.vimPlugins.copilot-lua.overrideAttrs (_: {
+      src = packagePkgs.fetchFromGitHub {
+        owner = "zbirenbaum";
+        repo = "copilot.lua";
+        rev = "v2.0.4";
+        hash = "sha256-05f76OeWBlFmlUh90tH4XMMKfNI1jnhuIJDqYPPQokA=";
+      };
+    });
     plugins = with packagePkgs.vimPlugins; [
       lz-n
       nvim-lspconfig
       nvim-treesitter.withAllGrammars
       vim-sleuth
       blink-cmp
+      blink-compat
+      blink-copilot
+      copilotLua
       snacks-nvim
       oil-nvim
       fzf-lua
@@ -34,6 +45,13 @@
         packages.nvim.start = plugins;
       };
     };
+    nvimApp = packagePkgs.writeShellApplication {
+      name = "nvim";
+      runtimeInputs = [packagePkgs.copilot-language-server];
+      text = ''
+        exec ${nvim}/bin/nvim "$@"
+      '';
+    };
   in {
     devShells.default = pkgs.mkShell {
       packages = with pkgs; [
@@ -48,7 +66,7 @@
     packages.nvim = nvim;
     apps.nvim = {
       type = "app";
-      program = "${nvim}/bin/nvim";
+      program = "${nvimApp}/bin/nvim";
       meta.description = "Portable Neovim configuration";
     };
   };

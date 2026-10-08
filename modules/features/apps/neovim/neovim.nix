@@ -32,6 +32,7 @@
       '';
 
       extraPackages = with pkgs; [
+        copilot-language-server
         fzf
         tree-sitter
       ];

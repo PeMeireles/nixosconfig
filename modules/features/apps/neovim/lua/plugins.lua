@@ -68,6 +68,10 @@ require("lz.n").load({
         suggestion = { enabled = false },
         panel = { enabled = false },
         filetypes = { markdown = true, help = true },
+        server = {
+          type = "binary",
+          custom_server_filepath = "copilot-language-server",
+        },
       })
     end,
   },
