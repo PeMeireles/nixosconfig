@@ -7,6 +7,11 @@
       package = inputs.dms.packages.${pkgs.system}.dms-shell;
       systemd.enable = true;
     };
+
+    environment.systemPackages = [
+      pkgs.hicolor-icon-theme
+      pkgs.papirus-icon-theme
+    ];
   };
 
     flake = {
@@ -22,7 +27,10 @@
         package = pkgs.papirus-icon-theme;
       };
 
-      home.packages = [ pkgs.papirus-icon-theme ];
+      home.packages = [
+        pkgs.hicolor-icon-theme
+        pkgs.papirus-icon-theme
+      ];
       home.sessionVariables.GTK_ICON_THEME = "Papirus-Dark";
 
       programs.dank-material-shell.enable = true;

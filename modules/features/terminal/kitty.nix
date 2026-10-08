@@ -1,9 +1,12 @@
 { ... }: {
   flake = {
-    modules.homeManager.terminal = {
+    modules.homeManager.terminal = { pkgs, ... }: {
+      home.packages = [ pkgs.nerd-fonts.bitstream-vera-sans-mono ];
+
       programs.kitty = {
         enable = true;
         settings = {
+          font_family = "BitstromWera Nerd Font";
           font_size = 12.0;
           window_padding_width = 12;
           background_opacity = "1.0";
