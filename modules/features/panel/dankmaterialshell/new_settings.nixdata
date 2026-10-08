@@ -87,6 +87,7 @@
       type = "exact";
     }
   ];
+  iconThemeDark = "Papirus";
   barConfigs = [
     {
       autoHide = false;

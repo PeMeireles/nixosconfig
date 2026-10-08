@@ -41,6 +41,13 @@ require("lz.n").load({
     end,
   },
   {
+    "project.nvim",
+    lazy = false,
+    after = function()
+      require("project").setup({})
+    end,
+  },
+  {
     "barbar.nvim",
     lazy = false,
     after = function()
@@ -76,5 +83,19 @@ require("lz.n").load({
     end,
   },
   { "mini.statusline" },
-  { "noice.nvim" },
+  { "nui.nvim", lazy = false },
+  {
+    "nvim-notify",
+    lazy = false,
+    after = function()
+      require("notify").setup({})
+    end,
+  },
+  {
+    "noice.nvim",
+    lazy = false,
+    after = function()
+      require("noice").setup({})
+    end,
+  },
 })

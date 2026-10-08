@@ -3,15 +3,18 @@
   wallpaperPath = "/home/vepelozi/Pictures/Wallpapers/wallpape.png";
   weatherLocation = "";
   weatherCoordinates = "41.1784933,-8.5961974";
-  doNotDisturb = true;
-  doNotDisturbHeldByScreenShare = true;
   nightModeEnabled = true;
   lastPlayerIdentity = "Mozilla firefox";
+  lastAppliedIconTheme = "Papirus";
+  launcherLastQuery = "fire";
   launcherQueryHistory = [
+    "fire"
+    "f"
+    "s"
+    "sh"
     "fi"
     "sob"
     "so"
-    "fire"
     "ves"
     "weat"
     "wea"
@@ -20,7 +23,6 @@
     "dol"
     "dolp"
     "ve"
-    "f"
     "sove"
     "sober"
     "ire"
