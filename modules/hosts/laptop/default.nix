@@ -19,6 +19,7 @@
           camera
           discord
           thunderbird
+          zotero
         ];
 
         home-manager.backupFileExtension = "hm-backup";
@@ -33,7 +34,8 @@
           cursor
           creative
           media
-           default-apps
+          self.modules.homeManager.development
+          default-apps
            dolphin
            neovim
          ];

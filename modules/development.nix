@@ -1,8 +1,17 @@
 {inputs, ...}: {
-  perSystem = {pkgs, ...}: let
+  perSystem = {lib, pkgs, system, ...}: let
+    supportedT3Code = system == "x86_64-linux";
     packagePkgs = import inputs.nixpkgs {
-      system = pkgs.stdenv.hostPlatform.system;
+      inherit system;
       config.allowUnfree = true;
+    };
+    t3code = packagePkgs.appimageTools.wrapType2 {
+      pname = "t3code";
+      version = "0.1.1";
+      src = packagePkgs.fetchurl {
+        url = "https://github.com/pingdotgg/t3code/releases/download/v0.1.1/T3-Code-0.1.1-x86_64.AppImage";
+        hash = "sha256-+KtS/hDvPLhyoIPQOP0SDdHsW0mP71aNBLKLenLGDDc=";
+      };
     };
     copilotLua = packagePkgs.vimPlugins.copilot-lua.overrideAttrs (_: {
       src = packagePkgs.fetchFromGitHub {
@@ -53,6 +62,8 @@
       '';
     };
   in {
+    formatter = pkgs.alejandra;
+
     devShells.default = pkgs.mkShell {
       packages = with pkgs; [
         alejandra
@@ -60,7 +71,7 @@
         marksman
         nixd
         stylua
-      ];
+      ] ++ lib.optionals supportedT3Code [t3code];
     };
 
     packages.nvim = nvim;
@@ -68,6 +79,13 @@
       type = "app";
       program = "${nvimApp}/bin/nvim";
       meta.description = "Portable Neovim configuration";
+    };
+  } // lib.optionalAttrs supportedT3Code {
+    packages.t3code = t3code;
+    apps.t3code = {
+      type = "app";
+      program = "${t3code}/bin/t3code";
+      meta.description = "T3 Code desktop app";
     };
   };
 }
