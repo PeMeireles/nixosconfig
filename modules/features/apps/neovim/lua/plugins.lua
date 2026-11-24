@@ -145,6 +145,8 @@ require("lz.n").load({
         { "<leader>cr", desc = "LSP: Rename symbol" },
         { "<leader>cf", desc = "LSP: Format buffer" },
         { "<leader>th", desc = "LSP: Toggle inlay hints" },
+        { "<leader>tm", desc = "Toggle Markdown render" },
+        { "<leader>tp", desc = "Toggle Markdown preview (browser)" },
       })
       vim.keymap.set("n", "<leader>?", function()
         which_key.show({ global = false })
@@ -166,6 +168,29 @@ require("lz.n").load({
     end,
   },
   { "mini.statusline" },
+  {
+    "mini.icons",
+    lazy = false,
+    after = function()
+      require("mini.icons").setup({})
+    end,
+  },
+  {
+    "render-markdown.nvim",
+    ft = { "markdown" },
+    cmd = { "RenderMarkdown" },
+    after = function()
+      require("render-markdown").setup({})
+    end,
+  },
+  {
+    "markdown-preview.nvim",
+    cmd = { "MarkdownPreview", "MarkdownPreviewToggle", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    before = function()
+      vim.g.mkdp_auto_close = 1
+    end,
+  },
   { "nui.nvim", lazy = false },
   {
     "nvim-notify",

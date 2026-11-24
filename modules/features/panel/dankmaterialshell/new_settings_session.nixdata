@@ -6,8 +6,10 @@
   nightModeEnabled = true;
   lastPlayerIdentity = "Mozilla firefox";
   lastAppliedIconTheme = "Papirus";
-  launcherLastQuery = "fire";
+  launcherLastQuery = "zo";
   launcherQueryHistory = [
+    "zo"
+    "z"
     "fire"
     "f"
     "s"
@@ -30,7 +32,6 @@
     "nv"
     "di"
     "disc"
-    "zo"
     "zoom"
     "kam"
     "\\"

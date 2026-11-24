@@ -145,6 +145,7 @@
       visible = true;
       widgetFollowInterfaceStyle = true;
       widgetTransparency = 1;
+      scrollYBehavior = "column";
     }
   ];
   builtInPluginSettings = {
