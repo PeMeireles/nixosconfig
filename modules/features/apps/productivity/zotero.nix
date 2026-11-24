@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.zotero = { pkgs, ... }:
+  flake.modules.nixos.zotero = { pkgs, ... }:
     let
       pkgsUnstable = import inputs.nixpkgs-unstable {
         inherit (pkgs.stdenv.hostPlatform) system;

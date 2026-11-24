@@ -1,5 +1,5 @@
 { ... }: {
-  flake.nixosModules.discord = { pkgs, ... }: {
+  flake.modules.nixos.discord = { pkgs, ... }: {
     environment.systemPackages = [ pkgs.vesktop ];
   };
 }

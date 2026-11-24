@@ -6,7 +6,7 @@
   flake = {
     modules = {
       nixos.laptop = {
-        imports = with self.nixosModules; [
+        imports = with self.modules.nixos; [
           laptopConfiguration
           dms
           dankGreeter
@@ -34,11 +34,11 @@
           cursor
           creative
           media
-          self.modules.homeManager.development
+          development
           default-apps
-           dolphin
-           neovim
-         ];
+          dolphin
+          neovim
+        ];
 
         nixpkgs.config.allowUnfree = true;
         home.stateVersion = "26.05";

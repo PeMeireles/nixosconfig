@@ -1,7 +1,6 @@
 { ... }: {
-  flake.nixosModules.fish = { pkgs, ... }: {
+  flake.modules.nixos.fish = {
     programs.fish.enable = true;
-    users.users.vepelozi.shell = pkgs.fish;
   };
 
   flake = {

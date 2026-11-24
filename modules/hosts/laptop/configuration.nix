@@ -3,17 +3,15 @@
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
   self,
-  inputs,
   ...
 }: {
-  flake.nixosModules.laptopConfiguration = {
-    config,
+  flake.modules.nixos.laptopConfiguration = {
     pkgs,
     ...
   }: {
     imports = [
       # Include the results of the hardware scan.
-      self.nixosModules.laptopHardware
+      self.modules.nixos.laptopHardware
     ];
 
     # Use the systemd-boot EFI boot loader.
@@ -114,6 +112,7 @@
       isNormalUser = true;
       description = "PPPP";
       extraGroups = ["networkmanager" "wheel" "video" "input" "uinput"];
+      shell = pkgs.fish;
       packages = with pkgs; [];
     };
 

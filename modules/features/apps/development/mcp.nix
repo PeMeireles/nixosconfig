@@ -36,10 +36,5 @@
         };
       };
     };
-    # Shouldn't be here
-    programs.opencode = {
-      enable = true;
-      enableMcpIntegration = true;
-    };
   };
 }

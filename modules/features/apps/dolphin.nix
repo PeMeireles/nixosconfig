@@ -1,6 +1,6 @@
 { ... }: {
   flake = {
-    nixosModules.dolphin = { pkgs, ... }: {
+    modules.nixos.dolphin = { pkgs, ... }: {
       environment.systemPackages = [ pkgs.kdePackages.qtsvg ];
     };
 

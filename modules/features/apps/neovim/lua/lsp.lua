@@ -81,10 +81,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>ws", require("fzf-lua").lsp_live_workspace_symbols, "Workspace symbols")
     map("<leader>ca", vim.lsp.buf.code_action, "Code action", { "n", "x" })
     map("<leader>cr", vim.lsp.buf.rename, "Rename")
-    map("<leader>cf", function()
-      vim.lsp.buf.format({ async = true })
-    end, "Format")
-
     local client = vim.lsp.get_client_by_id(event.data.client_id)
     if client and client:supports_method("textDocument/documentHighlight") then
       local group = vim.api.nvim_create_augroup("lsp-document-highlight", { clear = false })

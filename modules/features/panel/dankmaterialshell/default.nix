@@ -1,10 +1,10 @@
 { self, inputs, ... }: {
-  flake.nixosModules.dms = { pkgs, ... }: {
+  flake.modules.nixos.dms = { pkgs, ... }: {
     imports = [ inputs.dms.nixosModules.dank-material-shell ];
 
     programs.dank-material-shell = {
       enable = true;
-      package = inputs.dms.packages.${pkgs.system}.dms-shell;
+      package = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
       systemd.enable = true;
     };
 
@@ -14,7 +14,7 @@
     ];
   };
 
-    flake = {
+  flake = {
     modules.homeManager.dms = { pkgs, ... }: {
       imports = [
         inputs.dms.homeModules.dank-material-shell

@@ -1,5 +1,5 @@
 { inputs, ... }: {
-  flake.nixosModules.flatpak = {
+  flake.modules.nixos.flatpak = {
     imports = [ inputs.nix-flatpak.nixosModules.nix-flatpak ];
 
     xdg.portal.enable = true;

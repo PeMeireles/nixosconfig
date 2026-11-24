@@ -10,6 +10,60 @@ require("lz.n").load({
     end,
   },
   {
+    "nvim-treesitter-textobjects",
+    lazy = false,
+    after = function()
+      require("nvim-treesitter-textobjects").setup({
+        select = {
+          lookahead = true,
+          selection_modes = {
+            ["@parameter.outer"] = "v",
+            ["@function.outer"] = "V",
+            ["@class.outer"] = "<c-v>",
+          },
+          include_surrounding_whitespace = true,
+        },
+        move = { set_jumps = true },
+      })
+
+      local selections = {
+        af = { "@function.outer", "textobjects" },
+        ["if"] = { "@function.inner", "textobjects" },
+        ac = { "@class.outer", "textobjects" },
+        ic = { "@class.inner", "textobjects" },
+        ao = { "@comment.outer", "textobjects" },
+        ["as"] = { "@local.scope", "locals" },
+      }
+      for keys, query in pairs(selections) do
+        vim.keymap.set({ "x", "o" }, keys, function()
+          require("nvim-treesitter-textobjects.select").select_textobject(query[1], query[2])
+        end)
+      end
+
+      vim.keymap.set("n", "<leader>a", function()
+        require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
+      end, { desc = "Swap with next parameter" })
+      vim.keymap.set("n", "<leader>A", function()
+        require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner")
+      end)
+
+      local movements = {
+        ["+m"] = { "goto_next_start", "@function.outer" },
+        ["++"] = { "goto_next_start", "@class.outer" },
+        ["ḿ"] = { "goto_previous_start", "@function.outer" },
+        ["+M"] = { "goto_next_end", "@function.outer" },
+        ["Ḿ"] = { "goto_previous_end", "@function.outer" },
+        ["+l"] = { "goto_next", "@conditional.outer" },
+        ["ĺ"] = { "goto_previous", "@conditional.outer" },
+      }
+      for keys, movement in pairs(movements) do
+        vim.keymap.set({ "n", "x", "o" }, keys, function()
+          require("nvim-treesitter-textobjects.move")[movement[1]](movement[2], "textobjects")
+        end)
+      end
+    end,
+  },
+  {
     "blink.cmp",
     after = function()
       require("blink.cmp").setup({
