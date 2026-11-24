@@ -37,6 +37,26 @@ if vim.fn.executable("typescript-language-server") == 1 then
   table.insert(servers, "ts_ls")
 end
 
+if vim.fn.executable("bash-language-server") == 1 then
+  vim.lsp.config("bashls", { capabilities = capabilities })
+  table.insert(servers, "bashls")
+end
+
+if vim.fn.executable("fish-lsp") == 1 then
+  vim.lsp.config("fish_lsp", { capabilities = capabilities })
+  table.insert(servers, "fish_lsp")
+end
+
+if vim.fn.executable("rust-analyzer") == 1 then
+  vim.lsp.config("rust_analyzer", { capabilities = capabilities })
+  table.insert(servers, "rust_analyzer")
+end
+
+if vim.fn.executable("pyright-langserver") == 1 then
+  vim.lsp.config("pyright", { capabilities = capabilities })
+  table.insert(servers, "pyright")
+end
+
 vim.lsp.config("nixd", {
   capabilities = capabilities,
   settings = {
