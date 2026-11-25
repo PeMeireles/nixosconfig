@@ -127,7 +127,13 @@
       git
     ];
 
-    nix.settings.experimental-features = ["nix-command" "flakes"];
+    nix.settings = {
+      experimental-features = ["nix-command" "flakes"];
+      max-jobs = 4;
+      cores = 8;
+    };
+
+    zramSwap.enable = true;
 
     # Some programs need SUID wrappers, can be configured further or are
     # started in user sessions.

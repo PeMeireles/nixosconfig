@@ -1,4 +1,4 @@
-{...}: {
+{inputs, ...}: {
   flake.modules.homeManager.codex = {
     config,
     lib,
@@ -25,11 +25,25 @@
           ${lib.escapeShellArg codexConfigTarget}
       '';
 
-      file."${codexConfigFile}".enable = false;
+      file =
+        (lib.genAttrs ["gpt-6-1-terra" "gpt-6-2-terra" "gpt-5-1-terra"] (name: {
+          target = "${builtins.dirOf codexConfigTarget}/${name}.config.toml";
+          text = ''
+            model = "${{
+                gpt-6-1-terra = "gpt-6.1-terra";
+                gpt-6-2-terra = "gpt-6.2-terra";
+                gpt-5-1-terra = "gpt-5.1-terra";
+              }.${
+                name
+              }}"
+          '';
+        }))
+        // {"${codexConfigFile}".enable = false;};
     };
 
     programs.codex = {
       enable = true;
+      package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.codex;
       enableMcpIntegration = true;
 
       context = ''
@@ -75,7 +89,7 @@
       settings = {
         approval_policy = "on-request";
         check_for_update_on_startup = false;
-        model = "gpt-5.6-luna";
+        model = "gpt-6.1-terra";
         sandbox_mode = "workspace-write";
         tui.vim_mode_default = true;
       };

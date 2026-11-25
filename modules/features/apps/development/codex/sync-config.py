@@ -20,6 +20,15 @@ def merge(target, settings):
 def sync(source, target):
     original = target.read_text() if target.exists() else ""
     document = tomlkit.parse(original)
+    if document.get("profile") == "gpt-5.1-terra":
+        del document["profile"]
+    profiles = document.get("profiles")
+    if isinstance(profiles, Mapping):
+        for name in ("gpt-6.1", "gpt-6.2", "gpt-5.1-terra"):
+            if profiles.get(name) == {"model": name}:
+                del profiles[name]
+        if not profiles:
+            del document["profiles"]
     merge(document, tomlkit.parse(source.read_text()))
     updated = tomlkit.dumps(document)
     if updated == original and not target.is_symlink():
